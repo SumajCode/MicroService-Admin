@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: microservice-admin
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --bind 0.0.0.0:$PORT src.app:create_app()
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: MONGO_URI
+        fromDatabase:
+          name: admin-mongodb
+          property: connectionString
+      - key: FRONTEND_URL
+        value: https://your-frontend-domain.com
+
+databases:
+  - name: admin-mongodb
+    databaseName: admin_db
+    user: admin_user
