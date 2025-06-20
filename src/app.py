@@ -19,10 +19,11 @@ def create_app():
     app.config['MONGO_URI'] = os.getenv('MONGO_URI')
     
     # Configurar CORS para React
-    CORS(app, 
-         origins=os.getenv('FRONTEND_URL',),
-         supports_credentials=True,
-         allow_headers=['Content-Type', 'Authorization'])
+    CORS(app)
+    #CORS(app, 
+    #     origins=os.getenv('FRONTEND_URL',),
+    #     supports_credentials=True,
+    #     allow_headers=['Content-Type', 'Authorization'])
     
     # Inicializar JWT
     jwt = JWTManager(app)
