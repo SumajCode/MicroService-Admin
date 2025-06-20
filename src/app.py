@@ -13,14 +13,14 @@ def create_app():
     app = Flask(__name__)
     
     # Configuración
-    app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'your-secret-key-change-in-production')
+    app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=1)
     app.config['JWT_REFRESH_TOKEN_EXPIRES'] = timedelta(days=30)
-    app.config['MONGO_URI'] = os.getenv('MONGO_URI', 'mongodb://localhost:27017/admin_db')
+    app.config['MONGO_URI'] = os.getenv('MONGO_URI')
     
     # Configurar CORS para React
     CORS(app, 
-         origins=os.getenv('FRONTEND_URL', 'http://localhost:3000'),
+         origins=os.getenv('FRONTEND_URL',),
          supports_credentials=True,
          allow_headers=['Content-Type', 'Authorization'])
     
