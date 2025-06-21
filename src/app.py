@@ -19,7 +19,11 @@ def create_app():
     app.config['MONGO_URI'] = os.getenv('MONGO_URI')
     
     # Configurar CORS para React
-    CORS(app)
+    CORS(app,
+        origins="*",  # permite todos los orígenes
+        supports_credentials=True,
+        allow_headers=["Content-Type", "Authorization"],
+        expose_headers=["Content-Type", "Authorization"])
     #CORS(app, 
     #     origins=os.getenv('FRONTEND_URL',),
     #     supports_credentials=True,
