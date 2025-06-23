@@ -20,7 +20,10 @@ def create_app():
     
     # Configurar CORS para React
     CORS(app,
-        origins="*",  # permite todos los orígenes
+        origins=[
+            "https://front-adminv1.vercel.app",
+            "https://front-loginv1.vercel.app"
+        ],
         supports_credentials=True,
         allow_headers=["Content-Type", "Authorization"],
         expose_headers=["Content-Type", "Authorization"])
