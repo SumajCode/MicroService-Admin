@@ -21,14 +21,15 @@ def create_app():
     # Configurar CORS para React
     CORS(app,
         origins=[
-            "https://front-adminv1.vercel.app/",#Front-Admin
-            "https://front-loginv1.vercel.app/",#Front-Login
-            "http://localhost:3002/",#Front-Admin
-            "http://localhost:3003/"#Front-Login
+            "https://front-adminv1.vercel.app",#Front-Admin
+            "https://front-loginv1.vercel.app",#Front-Login
+            "http://localhost:3002",#Front-Admin
+            "http://localhost:3003"#Front-Login
         ],
         supports_credentials=True,
         allow_headers=["Content-Type", "Authorization"],
-        expose_headers=["Content-Type", "Authorization"])
+        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        expose_headers=["Content-Type", "Authorization"]),
     jwt = JWTManager(app)
     
     # Configurar MongoDB
