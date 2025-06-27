@@ -29,12 +29,6 @@ def create_app():
         supports_credentials=True,
         allow_headers=["Content-Type", "Authorization"],
         expose_headers=["Content-Type", "Authorization"])
-    #CORS(app, 
-    #     origins=os.getenv('FRONTEND_URL',),
-    #     supports_credentials=True,
-    #     allow_headers=['Content-Type', 'Authorization'])
-    
-    # Inicializar JWT
     jwt = JWTManager(app)
     
     # Configurar MongoDB
@@ -78,5 +72,5 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    port = int(os.getenv('PORT', 5000))
+    port = int(os.getenv('PORT', 4001))
     app.run(host='0.0.0.0', port=port, debug=os.getenv('FLASK_ENV') == 'development')
